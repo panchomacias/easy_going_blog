@@ -1,0 +1,9 @@
+<div class="mt-8 sm:mx-auto sm:w-full sm:max-w-lg">
+  <%= @post.title %>
+</div>
+
+<%= link_to "Edit", edit_post_path(@post) %>
+<%= link_to "New", new_post_path(@post) %>
+<%= link_to "Delete", post_path(@post), data: {
+  turbo_method: :delete, turbo_confirm: "Are you sure?"
+} %>
