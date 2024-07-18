@@ -23,13 +23,24 @@
       <div>
         <%= link_to "Read more", post_path(post), class:'text-sky-600 hover:underline hover:text-sm' %>
       </div>
-      
+
       <div class="text-gray-500 text-sm">
         <%= icon('fa-solid', 'calendar-days') %> 
         <%= post_time(post) %>
+      </div>
+      <div class=" text-gray-500 text-sm space-y-2">
+        <% post.comments.each do |comment| %>
+          <div><%= comment.author %></div>
+          <div class="mt-2">
+            <%= icon('fa-solid', 'comment') %>
+            <%= post.comments.count %> |
+            <%= link_to "New comment", new_post_comment_path(post) %>
+          </div>
+        <% end %>
       </div>
 
       <hr>
     <% end %>
   </div>
 </div>
+
