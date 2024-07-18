@@ -3,44 +3,4 @@
   <p class="text-md mb-6">"Another blog web app, for personal use"</p>
 </div>
 
-<div class="mt-8 sm:mx-auto sm:w-full sm:max-w-lg">
-
-  <div class="space-y-6">
-
-    <% @posts.each do |post| %>
-      <div>
-        <%= link_to post.title, post_path(post), class: 'block font-medium mt-3' %>
-      </div>
-
-      <div>
-        <%= truncate(post.content, length: 40, separator: '', class:'block text-sm mt-3') %>
-      </div>
-
-      <div>
-        <%= post.status %>
-      </div>
-
-      <div>
-        <%= link_to "Read more", post_path(post), class:'text-sky-600 hover:underline hover:text-sm' %>
-      </div>
-
-      <div class="text-gray-500 text-sm">
-        <%= icon('fa-solid', 'calendar-days') %> 
-        <%= post_time(post) %>
-      </div>
-      <div class=" text-gray-500 text-sm space-y-2">
-        <% post.comments.each do |comment| %>
-          <div><%= comment.author %></div>
-          <div class="mt-2">
-            <%= icon('fa-solid', 'comment') %>
-            <%= post.comments.count %> |
-            <%= link_to "New comment", new_post_comment_path(post) %>
-          </div>
-        <% end %>
-      </div>
-
-      <hr>
-    <% end %>
-  </div>
-</div>
-
+<%= render 'post_with_comments' %>
